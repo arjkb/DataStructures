@@ -15,7 +15,15 @@
 		int data;
 		Node *next;
 	public:
-		void setData(ind d)	{
+		Node()	{			//constructor 1
+			next = NULL;
+		}
+		Node(int d)	{		//constructor 2
+			data = d;
+			next = NULL;
+		}
+		
+		void setData(int d)	{
 			data = d;
 		}
 		int getData()	{
