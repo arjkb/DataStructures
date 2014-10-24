@@ -43,6 +43,22 @@ public:
 		}
 	}
 	
+	void insTail(int d)	{
+		Node *temp = new Node(d);
+		Node *loc;
+		
+		if( isEmpty() )	{
+			head = temp;
+		}
+		else {
+			loc = head;
+			while( loc->getNext() != NULL ) { //traverse to last node
+				loc = loc->getNext();			
+			}
+			loc->setNext(temp);
+		}
+	}
+	
 	void delHead()	{
 		Node *temp = head;
 		
@@ -81,6 +97,7 @@ int main()	{
 		
 		cout<<"\n [LINKED LIST IMPLEMENTATION]";
 		cout<<"\n 1. Insert to head";
+		cout<<"\n 2. Insert to tail";
 		cout<<"\n 4. Delete from head";
 		cout<<"\n 9. Display";
 		cout<<"\n 0. EXIT";
@@ -88,9 +105,13 @@ int main()	{
 			cin>>choice;
 		
 		switch(choice)	{
-			case 1: cout<<"\n Enter element to insert: ";
+			case 1: cout<<"\n Enter element to insert to head: ";
 					cin>>num;
 					L.insHead(num);
+					break;
+			case 2: cout<<"\n Enter element to insert to tail: ";
+					cin>>num;
+					L.insTail(num);
 					break;
 			case 4: L.delHead();
 					break;
