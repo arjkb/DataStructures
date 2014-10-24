@@ -72,6 +72,31 @@ public:
 		}
 	}
 	
+	void delTail()	{
+		Node *temp = head;
+		Node *loc;
+		
+		if( isEmpty() )	{
+			PRT_LIST_EMPTY;
+		}
+		else if( temp->getNext() == NULL )	{	
+			//if there is only one node
+			cout<<"\n Deleting Element: "<<temp->getData();
+			head = NULL;
+			delete temp;
+		}			
+		else {
+			while( temp->getNext() != NULL )	{	
+				//traverse to last two nodes
+				loc = temp;
+				temp = temp->getNext();
+			}
+			loc->setNext(NULL);
+			cout<<"\n Deleting Element: "<<temp->getData();
+			delete temp;
+		}
+	}
+	
 	void dispAll()	{
 		Node *temp = head;
 		
@@ -99,11 +124,11 @@ int main()	{
 		cout<<"\n 1. Insert to head";
 		cout<<"\n 2. Insert to tail";
 		cout<<"\n 4. Delete from head";
+		cout<<"\n 5. Delete from tail";
 		cout<<"\n 9. Display";
 		cout<<"\n 0. EXIT";
 		cout<<"\n Enter Your Choice: ";
-			cin>>choice;
-		
+			cin>>choice;		
 		switch(choice)	{
 			case 1: cout<<"\n Enter element to insert to head: ";
 					cin>>num;
@@ -114,6 +139,8 @@ int main()	{
 					L.insTail(num);
 					break;
 			case 4: L.delHead();
+					break;
+			case 5: L.delTail();
 					break;
 			case 9: cout<<"\n Elements of Linked List: ";
 					L.dispAll();
