@@ -3,6 +3,9 @@
 
 	DATE	: 28-October-2014
 	CODER	: Arjun Krishna Babu
+	
+	COMPILER: G++
+	OS		: Ubuntu 14.04 LTS 
 */
 
 #include<iostream>
@@ -22,12 +25,14 @@ public:
 		root = NULL;
 	}
 	
-	Node* getRoot()	{
+	Node* getRoot(void)	{
 		return root;
 	}
 	
 	void insert(int data);
 	void trav_pre(Node *r);
+	void trav_in(Node *r);
+	void trav_post(Node *r);
 };
 
 int main()	{
@@ -49,8 +54,14 @@ int main()	{
 					cin>>num;
 					B.insert(num);
 					break;
-			case 7: cout<<"\n Pre Order: ";
+			case 7: cout<<"\n Pre Order Traversal: ";
 					B.trav_pre( B.getRoot() );
+					break;
+			case 8: cout<<"\n In Order Traversal: ";
+					B.trav_in( B.getRoot() );
+					break;
+			case 9: cout<<"\n Post Order Traversal: ";
+					B.trav_post( B.getRoot() );
 					break;
 			case 0: cout<<"\n Program under development";
 					cout<<"\n Thank You For Using This Program!";
@@ -97,6 +108,22 @@ void BST::trav_pre(Node *R)	{
 		cout<<" "<<R->getData();
 		trav_pre(R->getLeft());
 		trav_pre(R->getRight());
+	}
+}
+
+void BST::trav_in(Node *R)	{
+	if( R != NULL )	{
+		trav_in( R->getLeft() );
+		cout<<" "<<R->getData();
+		trav_in( R->getRight() );
+	}
+}
+
+void BST::trav_post(Node *R)	{
+	if( R != NULL )	{
+		trav_post( R->getLeft() );
+		trav_post( R->getRight() );
+		cout<<" "<<R->getData();
 	}
 }
 
